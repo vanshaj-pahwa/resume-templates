@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedIn's Resume</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f2ef;
+        }
+
+        .resume-container {
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        .skills-container {
+            margin-top: 5px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid rgb(178, 174, 174);
+            border-radius: 8px;
+            height: fit-content;
+        }
+
+        .skills-title {
+            font-size: medium;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .skill-item {
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .skill-item:last-child {
+            border-bottom: none;
+        }
+
+        .navbar {
+            background-color: white;
+            color: #0077B5;
+            padding: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-logo {
+            width: 25px;
+            height: 25px;
+            margin-right: 10px;
+        }
+
+        .navbar-search {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            margin: 0 5px;
+            position: relative;
+        }
+
+        .search-input {
+            width: calc(100% - 100px);
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            outline: none;
+            padding-left: 40px;
+            /* Adjusted padding for the icon */
+            background-color: #f0f2f0;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 10px;
+            color: #0077B5;
+            font-size: 20px;
+            pointer-events: none;
+            /* Ensures the icon is not clickable */
+        }
+
+        .navbar-icon {
+            margin-left: 20px;
+            fill: gray;
+        }
+
+        .profile-pic {
+            border-radius: 12px;
+        }
+
+        .profile-container {
+            margin-top: 5px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid rgb(178, 174, 174);
+            border-radius: 8px;
+            height: fit-content;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 12px;
+        }
+
+        .profile-info {
+            flex: 1;
+        }
+
+        .profile-name {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .project-name a {
+            text-decoration: none;
+            color: #000;
+        }
+        .project-name a:hover {
+            text-decoration: underline;
+            color: #000;
+        }
+
+        .profile-title {
+            margin-bottom: 5px;
+        }
+
+        .profile-contact-left {
+            font-size: smaller;
+            display: flex;
+        }
+
+        .contact-info-left {
+            text-decoration: none;
+            margin-left: 6px;
+        }
+
+        .contact-info-left:hover {
+            text-decoration: underline;
+        }
+
+        .profile-location {
+            color: rgba(0, 0, 0, 0.6);
+        }
+
+        .profile-contact {
+            font-size: smaller;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-info {
+            text-decoration: none;
+            margin-top: 6px;
+        }
+
+        .contact-info i {
+            margin-right: 5px;
+        }
+
+        .contact-info a {
+            text-decoration: none;
+            color: #0077B5;
+        }
+
+        .contact-info:hover {
+            text-decoration: underline;
+        }
+
+        .experience-container {
+            margin-top: 5px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid rgb(178, 174, 174);
+            border-radius: 8px;
+            height: fit-content;
+        }
+
+        .experience-title {
+            font-size: medium;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .company-name {
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .role {
+            font-size: 12px;
+        }
+
+        .date {
+            font-size: 11px;
+            margin-top: 0.3rem;
+            color: rgba(0, 0, 0, 0.6);
+        }
+
+        .description {
+            margin: 0.5rem 0 0.5rem 0;
+            font-size: 12px;
+        }
+
+        .projects-container {
+            margin-top: 5px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid rgb(178, 174, 174);
+            border-radius: 8px;
+            height: fit-content;
+        }
+
+        .project-title {
+            font-size: medium;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .project-name {
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .skills {
+            font-size: 11px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="resume-container">
+        <div class="navbar">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
+                alt="LinkedIn Logo" class="navbar-logo">
+            <div class="navbar-search">
+                <span class="search-icon">&#128269;</span>
+                <input type="text" class="search-input" placeholder="Vanshaj Pahwa" value="Vanshaj Pahwa">
+            </div>
+            <div class="navbar-icons">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24"
+                    fill="currentColor" class="navbar-icon" width="24" height="24" focusable="false">
+                    <path d="M23 9v2h-2v7a3 3 0 01-3 3h-4v-6h-4v6H6a3 3 0 01-3-3v-7H1V9l11-7z"></path>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24"
+                    fill="currentColor" class="navbar-icon" width="24" height="24" focusable="false">
+                    <path
+                        d="M12 16v6H3v-6a3 3 0 013-3h3a3 3 0 013 3zm5.5-3A3.5 3.5 0 1014 9.5a3.5 3.5 0 003.5 3.5zm1 2h-2a2.5 2.5 0 00-2.5 2.5V22h7v-4.5a2.5 2.5 0 00-2.5-2.5zM7.5 2A4.5 4.5 0 1012 6.5 4.49 4.49 0 007.5 2z">
+                    </path>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24"
+                    fill="currentColor" class="navbar-icon" width="24" height="24" focusable="false">
+                    <path
+                        d="M17 6V5a3 3 0 00-3-3h-4a3 3 0 00-3 3v1H2v4a3 3 0 003 3h14a3 3 0 003-3V6zM9 5a1 1 0 011-1h4a1 1 0 011 1v1H9zm10 9a4 4 0 003-1.38V17a3 3 0 01-3 3H5a3 3 0 01-3-3v-4.38A4 4 0 005 14z">
+                    </path>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24"
+                    fill="currentColor" class="navbar-icon" width="24" height="24" focusable="false">
+                    <path
+                        d="M16 4H8a7 7 0 000 14h4v4l8.16-5.39A6.78 6.78 0 0023 11a7 7 0 00-7-7zm-8 8.25A1.25 1.25 0 119.25 11 1.25 1.25 0 018 12.25zm4 0A1.25 1.25 0 1113.25 11 1.25 1.25 0 0112 12.25zm4 0A1.25 1.25 0 1117.25 11 1.25 1.25 0 0116 12.25z">
+                    </path>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24"
+                    fill="currentColor" class="navbar-icon" width="24" height="24" focusable="false">
+                    <path
+                        d="M22 19h-8.28a2 2 0 11-3.44 0H2v-1a4.52 4.52 0 011.17-2.83l1-1.17h15.7l1 1.17A4.42 4.42 0 0122 18zM18.21 7.44A6.27 6.27 0 0012 2a6.27 6.27 0 00-6.21 5.44L5 13h14z">
+                    </path>
+                </svg>
+                <img width="24"
+                    src="https://media.licdn.com/dms/image/D4D03AQE4soX7X-s45g/profile-displayphoto-shrink_100_100/0/1697738432005?e=1721865600&amp;v=beta&amp;t=m0M3C7Acazt52NIuomG7Kx-5FBcffunD2_0faJnEFpc"
+                    height="24" alt="Vanshaj Pahwa" id="ember21" class="navbar-icon profile-pic">
+                </svg>
+            </div>
+        </div>
+
+        <div class="profile-container">
+            <div class="profile-header">
+                <div class="profile-info">
+                    <div class="profile-name">Vanshaj Pahwa</div>
+                    <div class="profile-title">Software Engineer</div>
+                    <div class="profile-contact-left">
+                        <div class="profile-location">Gurugram, Haryana</div>
+                        <div><a class="contact-info-left" target="_blank"
+                                href="https://www.linkedin.com/in/vanshaj-pahwa/overlay/contact-info/">Contact Info</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-contact">
+                    <div class="contact-info">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:vanshajpahwa07@gmail.com">vanshajpahwa07@gmail.com</a>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-phone"></i>
+                        <a href="tel:+919467275790">(+91) 9467275790</a>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fab fa-linkedin"></i>
+                        <a href="https://www.linkedin.com/in/vanshaj-pahwa/" target="_blank">LinkedIn</a>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fab fa-github"></i>
+                        <a href="https://github.com/vanshaj-pahwa/" target="_blank">GitHub</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Add more profile sections here -->
+        </div>
+
+        <div class="experience-container">
+            <div class="experience-title">Experience</div>
+            <ul>
+                <div class="company-name">HashedIn By Deloitte</div>
+                <li>
+                    <div class="role">Software Engineer-I</div>
+                    <div class="date">Aug 2022 - Present</div>
+                    <div class="description">
+                        <ul class="description">
+                            <li>Led a cross-functional team in successfully delivering a new feature using <b>React</b> and
+                            <b>GraphQL</b>, contributing to improved cost optimization and reduction for the leadership
+                                team.
+                            </li>
+                            <li>Introduced automated unit testing processes with <b>Jest</b> and the <b>react-testing library</b>,
+                                increasing component coverage by <b>80%</b> and reducing post-release defects by <b>25%</b> through
+                                the removal of code smells using SonarQube.</li>
+                            <li>Developed a user-friendly CMS by integrating <b>Strapi</b> with <b>React</b>, empowering non-technical
+                                users to manage and update content effortlessly, reducing dependency on developer
+                                intervention.</li>
+                            <li>Implemented <b>microservices architecture</b> using <b>Spring Boot</b>, leading to a smooth MVP
+                                release and a subsequent <b>25%</b> improvement in API response time.</li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="role">Software Engineer Intern</div>
+                    <div class="date">Mar 2022 - Aug 2022</div>
+                    <div class="description">
+                        <ul>
+                            <li>Implemented backend <b>microservices architecture</b> using <b>Spring Boot</b> and integrated it with
+                                responsive user interfaces in <b>React</b>, resulting in a <b>25%</b> reduction in application load
+                                time. </li>
+                            <li>Contributed to the adoption of <b>agile methodologies</b>, utilizing <b>Jira</b>, and improved team
+                                productivity by <b>15%</b> through iterative development cycles. </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="projects-container">
+            <div class="project-title">Projects</div>
+            <div class="project-name"><a href="https://github.com/vanshaj-pahwa/SWoT" target="_blank">SWoT - Workout Tracking Application</a></div>
+            <div class="skills">Skills: React.js, Redux, Spring Boot, PostgreSQL</div>
+            <div class="description">
+                <ul>
+                    <li>Developed a responsive UI using <b>React</b> and <b>Material-UI</b> for a workout tracking application,
+                        ensuring a seamless user experience across various devices.
+                    </li>
+                    <li>Implemented secure user authentication using <b>JWT</b> and integrated <b>Redux</b> for efficient state
+                        management, enhancing the application’s security and performance.</li>
+                    <li>Improved user engagement and motivation by providing a visually rich and interactive platform
+                        for tracking and analyzing workout data.</li>
+                    <li>Designed and implemented <b>RESTful endpoints</b> in <b>Spring Boot</b> and a relational database schema using
+                        <b>Spring Data JPA</b>, thereby minimizing latency and enhancing the user experience.</li>
+                </ul>
+            </div>
+            <div class="project-name"><a href="https://github.com/vanshaj-pahwa/Game-Ooze" target="_blank">Game Ooze - Gaming Portal </a></div>
+            <div class="skills">Skills: Java, Java Swing, Apache NetBeans</div>
+            <div class="description">
+                <ul>
+                    <li>Implemented Flappy Bird’s physics simulation with <b>gravity, collision detection, and random pipe
+                        generation</b>, creating a challenging and addictive experience.
+                    </li>
+                    <li>Built BreakOut Ball’s dynamic layout with a paddle and ball physics, multi-row brick layout with
+                        <b>varying point values, difficulties levels and win/lose logic.</b> </li>
+                    <li>Programmed a scoring system and high score tracking in both games and introduced a progressive
+                        difficulty curve by <b>increasing pipe speed after every five points</b> and <b>game termination upon failure
+                            to hit the ball with the paddle.</b> </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="skills-container">
+            <div class="skills-title">Skills</div>
+
+            <div class="skill-item">
+                <b>Languages:</b> &nbsp; C/C++, Java, HTML, CSS, JavaScript
+            </div>
+
+            <div class="skill-item">
+                <b>Technologies / Frameworks:</b> &nbsp; React.js, Redux, GraphQL, Strapi, Spring Boot, Java Swing
+            </div>
+
+            <div class="skill-item">
+                <b>Tools / Platforms:</b> &nbsp; VS Code, Intellij Idea, Liferay, SonarQube, NetBeans
+            </div>
+
+
+        </div>
+    </div>
+</body>
+
+</html>
